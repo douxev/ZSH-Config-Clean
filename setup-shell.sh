@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-#
-# setup-shell.sh — Migration oh-my-zsh + oh-my-posh → zsh pur + starship
-# Thème Nord reproduisant fidèlement le theme_omp.yaml original.
-#
-# À lancer en tant que Maëlle (pas en sudo) :  bash setup-shell.sh
 
 set -euo pipefail
 
@@ -27,7 +22,7 @@ for f in "$HOME/.zshrc" "$HOME/.scripts/theme_omp.yaml" "$HOME/.config/starship.
 done
 
 # -----------------------------------------------------------------------------
-# 2. Vérification des outils
+# 2. Tools verif
 # -----------------------------------------------------------------------------
 echo
 echo "${C_OK}── Vérification des outils ─────────────────────────────────${C_RST}"
@@ -275,7 +270,7 @@ STARSHIP_EOF
 log "Config starship écrite : ~/.config/starship.toml"
 
 # -----------------------------------------------------------------------------
-# 4. Nouveau .zshrc
+# 4. new .zshrc
 # -----------------------------------------------------------------------------
 cat > "$HOME/.zshrc" <<'ZSHRC_EOF'
 # ~/.zshrc — zsh pur + starship + atuin (thème Nord)
@@ -490,7 +485,7 @@ ZSHRC_EOF
 log "Nouveau ~/.zshrc écrit"
 
 # -----------------------------------------------------------------------------
-# 5. Rappel final
+# 5. Final
 # -----------------------------------------------------------------------------
 cat <<EOF
 
