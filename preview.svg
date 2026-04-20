@@ -1,0 +1,50 @@
+<svg width="680" height="320" viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .mono { font-family: 'JetBrains Mono', 'Fira Code', 'Menlo', 'Consolas', monospace; font-size: 14px; }
+    .dim { fill: #4C566A; }
+  </style>
+
+  <!-- Fond terminal Nord (nord0) -->
+  <rect x="0" y="0" width="680" height="320" fill="#2E3440" rx="8"/>
+
+  <!-- Barre de titre -->
+  <circle cx="20" cy="20" r="6" fill="#BF616A"/>
+  <circle cx="40" cy="20" r="6" fill="#EBCB8B"/>
+  <circle cx="60" cy="20" r="6" fill="#A3BE8C"/>
+  <text x="340" y="25" class="mono dim" text-anchor="middle" font-size="12">zsh — starship prompt</text>
+
+  <!-- Session 1 : dans ~ -->
+  <text x="20" y="70" class="mono">
+    <tspan fill="#EBCB8B">╭─</tspan><tspan fill="#BF616A">[</tspan><tspan fill="#B48EAD">󰋜</tspan><tspan fill="#BF616A">]</tspan><tspan fill="#5E81AC"> 󱑓 8ms </tspan><tspan fill="#A3BE8C">󰸞 </tspan>
+  </text>
+  <text x="660" y="70" class="mono" text-anchor="end">
+    <tspan fill="#EBCB8B"> main </tspan><tspan fill="#8FBCBB"> 19:42 </tspan><tspan fill="#A3BE8C">󰁹 98%</tspan>
+  </text>
+  <text x="20" y="95" class="mono">
+    <tspan fill="#EBCB8B">╰─</tspan><tspan fill="#A3BE8C"></tspan><tspan fill="#EBCB8B"></tspan><tspan fill="#D08770"></tspan><tspan fill="#EBCB8B">  ❯</tspan><tspan fill="#D8DEE9"> ls</tspan>
+  </text>
+  <text x="20" y="125" class="mono" fill="#D8DEE9">Documents  Downloads  Pictures  Projects</text>
+
+  <!-- Session 2 : dans un sous-dossier, commande échouée -->
+  <text x="20" y="165" class="mono">
+    <tspan fill="#EBCB8B">╭─</tspan><tspan fill="#BF616A">[</tspan><tspan fill="#B48EAD">󰋜 Projects/shell-config</tspan><tspan fill="#BF616A">]</tspan><tspan fill="#5E81AC"> 󱑓 1.2s </tspan><tspan fill="#BF616A">✘ </tspan>
+  </text>
+  <text x="660" y="165" class="mono" text-anchor="end">
+    <tspan fill="#EBCB8B"> main </tspan><tspan fill="#EBCB8B">[ 2 ?1] </tspan><tspan fill="#8FBCBB"> 19:43 </tspan><tspan fill="#A3BE8C">󰁹 97%</tspan>
+  </text>
+  <text x="20" y="190" class="mono">
+    <tspan fill="#EBCB8B">╰─</tspan><tspan fill="#A3BE8C"></tspan><tspan fill="#EBCB8B"></tspan><tspan fill="#D08770"></tspan><tspan fill="#EBCB8B">  </tspan><tspan fill="#BF616A">❯</tspan><tspan fill="#D8DEE9"> git pussh</tspan>
+  </text>
+
+  <!-- Transient prompts -->
+  <text x="20" y="230" class="mono dim">── transient prompts (commandes déjà validées) ──</text>
+  <text x="20" y="260" class="mono">
+    <tspan fill="#EBCB8B">󰋜 ❯</tspan><tspan fill="#D8DEE9"> cd Projects/shell-config</tspan>
+  </text>
+  <text x="20" y="285" class="mono">
+    <tspan fill="#EBCB8B">󰋜 Projects/shell-config ❯</tspan><tspan fill="#D8DEE9"> git status</tspan>
+  </text>
+  <text x="20" y="310" class="mono">
+    <tspan fill="#EBCB8B">󰋜 Projects/shell-config ❯</tspan><tspan fill="#D8DEE9"> vim README.md</tspan>
+  </text>
+</svg>
