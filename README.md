@@ -1,41 +1,41 @@
 # shell-config
 
-Configuration zsh minimaliste avec [starship](https://starship.rs/), thème Nord, transient prompt et chargement rapide.
+Minimalist zsh configuration with [starship](https://starship.rs/), Nord theme, transient prompt and fast startup.
 
-![Aperçu du prompt](preview.svg)
+![Prompt preview](preview.svg)
 
-Remplace `oh-my-zsh` + `oh-my-posh` par du zsh pur + starship. Tous les plugins utiles (autosuggestions, syntax highlighting, completion, colored man pages) sont conservés mais sourcés directement, sans framework intermédiaire.
+Replaces `oh-my-zsh` + `oh-my-posh` with pure zsh + starship. All useful plugins (autosuggestions, syntax highlighting, completion, colored man pages) are kept but sourced directly, without a framework layer.
 
-## Fonctionnalités
+## Features
 
-- **Prompt deux lignes** avec palette Nord : chemin avec icône maison, durée de commande, statut `✓`/`✘`, branche git avec compteurs de changements, heure, batterie.
-- **Transient prompt** : les prompts validés se simplifient en `󰋜 path ❯`, gardant l'historique lisible.
-- **Icône maison conditionnelle** : `󰋜` seul dans `$HOME`, `󰋜 sous-dossier` ailleurs.
-- **Démarrage rapide** : ~50-100 ms contre 400+ ms avec oh-my-zsh + oh-my-posh.
-- **NVM en lazy-loading** : ne s'initialise qu'au premier `node`/`npm`.
-- **`compinit` mis en cache** : vérifie `.zcompdump` une fois par jour.
-- **Intégration atuin et zoxide** si installés.
+- **Two-line prompt** with Nord palette: path with home icon, command duration, `✓`/`✘` status, git branch with change counters, time, battery.
+- **Transient prompt**: validated prompts collapse to `󰋜 path ❯`, keeping history readable.
+- **Conditional home icon**: `󰋜` alone in `$HOME`, `󰋜 subdir` elsewhere.
+- **Fast startup**: ~50–100 ms versus 400+ ms with oh-my-zsh + oh-my-posh.
+- **Lazy-loaded NVM**: only initialized on the first `node`/`npm` call.
+- **Cached `compinit`**: checks `.zcompdump` once a day.
+- **atuin and zoxide integration** if installed.
 
-## Prérequis
+## Requirements
 
 - zsh
-- Une [Nerd Font](https://www.nerdfonts.com/) dans le terminal (pour les icônes `󰋜`, ``, ``, ``, etc.)
-- `curl` (pour installer starship si absent)
+- A [Nerd Font](https://www.nerdfonts.com/) in your terminal (for the `󰋜`, ``, ``, `` glyphs and friends)
+- `curl` (to install starship if it's missing)
 
-Outils optionnels détectés à l'installation, chargés conditionnellement :
+Optional tools detected at install time and loaded conditionally:
 
-| Outil | Rôle | Install Debian/Ubuntu |
+| Tool | Role | Install on Debian/Ubuntu |
 |---|---|---|
-| `starship` | moteur de prompt (requis) | script officiel |
-| `zoxide` | `cd` intelligent basé sur l'historique | `apt install zoxide` |
-| `atuin` | historique shell enrichi et recherchable | `curl -sS https://setup.atuin.sh \| sh` |
-| `eza` | remplacement moderne de `ls` | `apt install eza` |
-| `bat` | remplacement de `cat` avec coloration syntaxique | `apt install bat` |
-| `fzf` | fuzzy finder (utilisé par les fonctions `g`, `d`, `s`) | `apt install fzf` |
+| `starship` | prompt engine (required) | official install script |
+| `zoxide` | smart `cd` based on frecency | `apt install zoxide` |
+| `atuin` | searchable, enriched shell history | `curl -sS https://setup.atuin.sh \| sh` |
+| `eza` | modern `ls` replacement | `apt install eza` |
+| `bat` | `cat` replacement with syntax highlighting | `apt install bat` |
+| `fzf` | fuzzy finder (used by the `g`, `d`, `s` functions) | `apt install fzf` |
 
 ## Installation
 
-Un seul script fait tout — backup de l'existant, vérification des outils, écriture de `~/.config/starship.toml` et `~/.zshrc`.
+A single script handles everything — backup of existing config, tool detection, writing `~/.config/starship.toml` and `~/.zshrc`.
 
 ```bash
 git clone https://github.com/<user>/shell-config.git
@@ -44,65 +44,65 @@ bash setup-shell.sh
 exec zsh
 ```
 
-Le script est idempotent : tu peux le relancer sans rien casser. Chaque exécution crée un backup horodaté dans `~/.config-backup-YYYYMMDD-HHMMSS/`.
+The script is idempotent: you can re-run it without breaking anything. Each run creates a timestamped backup at `~/.config-backup-YYYYMMDD-HHMMSS/`.
 
-## Structure du prompt
+## Prompt structure
 
 ```
 ╭─[ 󰋜 path ] 󱑓 duration ✓/✘                     branch [status]  hh:mm  󰁹 %
 ╰─    ❯ 
 ```
 
-| Segment | Rôle | Couleur (palette Nord) |
+| Segment | Role | Color (Nord palette) |
 |---|---|---|
-| `╭─` `╰─` | bras décoratifs | nord13 (jaune chaud) |
-| `[ ]` | délimiteurs du chemin | nord11 (rouge) |
-| `󰋜 path` | icône maison et chemin tronqué à 3 niveaux | nord15 (violet) |
-| `󱑓 duration` | temps d'exécution avec millisecondes | nord10 (bleu) |
-| `✓` / `✘` | statut de la commande précédente | nord14 vert / nord11 rouge |
-| `   ` | trois diamants décoratifs | nord14 / nord13 / nord12 |
-| `❯` | chevron final (vert si succès, rouge si erreur) | nord13 / nord11 |
-| ` branch` | branche git courante | nord13 |
-| `[ ... ]` | statut git (ajouts, modifs, untracked, ahead/behind) | nord13 |
-| ` hh:mm` | heure | nord7 (cyan) |
-| `󰁹 %` | batterie (icône et couleur varient selon le niveau) | nord11 → nord14 |
+| `╭─` `╰─` | decorative arms | nord13 (warm yellow) |
+| `[ ]` | path delimiters | nord11 (red) |
+| `󰋜 path` | home icon and path truncated to 3 levels | nord15 (purple) |
+| `󱑓 duration` | command duration with milliseconds | nord10 (blue) |
+| `✓` / `✘` | previous command status | nord14 green / nord11 red |
+| `   ` | three decorative diamonds | nord14 / nord13 / nord12 |
+| `❯` | final chevron (green on success, red on error) | nord13 / nord11 |
+| ` branch` | current git branch | nord13 |
+| `[ ... ]` | git status (added, modified, untracked, ahead/behind) | nord13 |
+| ` hh:mm` | time | nord7 (cyan) |
+| `󰁹 %` | battery (icon and color vary with level) | nord11 → nord14 |
 
-## Raccourcis conservés
+## Bundled shortcuts
 
-Fonctions zsh utilisant `fzf` pour la sélection interactive :
+zsh functions using `fzf` for interactive selection:
 
-| Commande | Rôle |
+| Command | Role |
 |---|---|
-| `checkout` | checkout interactif d'une branche git |
-| `commits` | checkout interactif d'un commit (preview inclus) |
+| `checkout` | interactive branch checkout |
+| `commits` | interactive commit checkout (with preview) |
 | `push "message"` | `git add . && git commit -m "..." && git push` |
-| `clean-git` | supprime les branches locales dont la remote a disparu |
-| `g` | menu fzf : push / log / branches / pull |
-| `d` | menu fzf docker : kill all / ps -a / lazydocker |
-| `s` | menu fzf shell : reset / exec zsh / historique atuin |
-| `unlock` | `ssh-add` pour charger les clés SSH dans l'agent |
+| `clean-git` | delete local branches whose remote is gone |
+| `g` | fzf menu: push / log / branches / pull |
+| `d` | fzf docker menu: kill all / ps -a / lazydocker |
+| `s` | fzf shell menu: reset / exec zsh / atuin history |
+| `unlock` | `ssh-add` to load SSH keys into the agent |
 
-## Personnalisation
+## Customization
 
-Toutes les couleurs sont définies dans la palette `[palettes.nord]` de `~/.config/starship.toml`. Modifier une couleur n'importe où (par exemple `nord13` pour le jaune chaud) se répercute sur tous les segments qui l'utilisent.
+All colors live in the `[palettes.nord]` palette inside `~/.config/starship.toml`. Changing a single entry (e.g. `nord13` for warm yellow) propagates to every segment that uses it.
 
-Pour ajouter tes propres alias ou variables d'environnement sans modifier ce repo, crée `~/.zshrc.local` et ajoute à la fin de ton `~/.zshrc` :
+To add your own aliases or environment variables without modifying this repo, create `~/.zshrc.local` and append the following to your `~/.zshrc`:
 
 ```bash
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 ```
 
-## Désinstallation
+## Uninstall
 
 ```bash
-# Restaurer l'ancienne config
+# Restore the previous config
 cp ~/.config-backup-YYYYMMDD-HHMMSS/.zshrc ~/
 rm ~/.config/starship.toml
 
-# Optionnel : nettoyer les restes
+# Optional: clean up leftovers
 rm -rf ~/.oh-my-zsh ~/.cache/oh-my-posh
 ```
 
-## Licence
+## License
 
 MIT
