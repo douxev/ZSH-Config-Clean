@@ -86,7 +86,7 @@ cat > "$HOME/.config/starship.toml" <<'STARSHIP_EOF'
 # Ligne 2 : ╰─🟢🟡🟠 ▶
 
 # ─── Clés racine (AVANT toute section [table]) ───
-add_newline = true
+add_newline = false
 palette     = "nord"
 
 format = """
