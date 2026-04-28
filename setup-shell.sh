@@ -422,10 +422,11 @@ alias nano="vim"
 alias "sudo nano"="sudo vim"
 
 # Listing (eza)
-alias ll="eza -lm -h -F -L 2 --no-user --git"
-alias la="eza -lam -h -F -L 2 --no-user --git"
-alias ls="eza -GF --icons"
-alias l="eza -GF --icons"
+alias ll="eza -lm -h --classify=auto -L 2 --no-user --git"
+alias la="eza -lam -h --classify=auto -L 2 --no-user --git"
+alias ls="eza -G --classify=auto --icons=auto"
+alias l="eza -G --classify=auto --icons=auto"
+
 
 # Dev
 alias m="make -j"
