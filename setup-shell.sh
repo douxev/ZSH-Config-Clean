@@ -445,6 +445,19 @@ alias prout="echo prout"
 # Fonctions
 # -----------------------------------------------------------------------------
 unlock() { ssh-add ; }
+rcp() {
+  local cmd=copy
+  local -a extra=(--ignore-existing)
+  if [[ "$1" == sync ]]; then
+    cmd=sync
+    extra=()
+    shift
+  fi
+  local src="$1" dst="$2"; shift 2
+  rclone "$cmd" "$src" "$dst" \
+    --transfers=32 --checkers=16 --buffer-size=256M \
+    --progress "${extra[@]}" "$@"
+}
 
 fmenu() {
   local cmd
